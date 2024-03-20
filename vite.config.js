@@ -1,8 +1,18 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import eslint from 'vite-plugin-eslint';
+import { VitePWA } from 'vite-plugin-pwa';
+import { ViteAliases } from 'vite-aliases';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import { VitePluginGhPages } from 'vite-plugin-gh-pages';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint()],
+  plugins: [
+    reactRefresh(),
+    ViteAliases(),
+    VitePWA(),
+    VitePluginGhPages({
+      build: {
+        outDir: 'dist',
+      },
+    }),
+  ],
 });
